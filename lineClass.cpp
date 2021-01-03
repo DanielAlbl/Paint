@@ -24,6 +24,10 @@ bool Line::contains(int x, int y)
     return false;
   if( x < x_min - 30)
     return false;
+  if( y < y_min - 30)
+    return false;
+  if( y > y_max + 30)
+    return false;
   if( y > m*x + b + 30 )
     return false;  
   if( y < m*x + b - 30 )
