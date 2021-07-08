@@ -2,12 +2,12 @@ SOURCE = event.cpp \
 	     palette.cpp \
 	     main.cpp \
 	     gl.cpp \
-	     rectangleClass.cpp \
-	     shapeClass.cpp \
+	     rectangle.cpp \
+	     shape.cpp \
 	     utilities.cpp \
-         lineClass.cpp \
-         ellipseClass.cpp \
-         currentSelectionClass.cpp 
+         line.cpp \
+         ellipse.cpp \
+         currentSelection.cpp 
 
 OBJS = $(SOURCE:.cpp=.o)
 
@@ -43,7 +43,7 @@ tar: clean
 	tar zcvf paint.tgz $(SOURCE) *.h Makefile
 
 help:
-	@echo "	make main  - same as make all"
+	@echo "	make paint - same as make all"
 	@echo "	make all   - builds the main target"
 	@echo "	make       - same as make all"
 	@echo "	make clean - remove .o .d core main"

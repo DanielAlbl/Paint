@@ -5,12 +5,11 @@
 #ifndef __EVENT_H
 #define __EVENT_H
 
-#include "rectangleClass.h"
-#include "filledRectangleClass.h"
-#include "lineClass.h"
-#include "ellipseClass.h"
+#include "rectangle.h"
+#include "filledRectangle.h"
+#include "line.h"
+#include "ellipse.h"
 #include "gl.h"
-#include <iostream>
 
 const char Esc = 27;
 const char Bs  = 8;
@@ -22,4 +21,5 @@ void ClearOnC(unsigned char);
 bool colorPaletteClick(int, int, int);
 void redrawEverything();
 void deleteLastShape(unsigned char);
+
 #endif
