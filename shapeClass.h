@@ -1,6 +1,6 @@
 /*************************************************************************//**
 * @file
-* @brief This is the base calss used by the drawn shapes in paint. 
+* @brief This is the base calss used by the drawn shapes in paint.
 *****************************************************************************/
 #ifndef SHAPES
 #define SHAPES
@@ -12,9 +12,8 @@
 /*!
  * @brief This is the base class for all geometric classes.
  */
-class Shapes
-{
- public:
+class Shapes {
+public:
   Points limits;
   static std::list<Shapes*> printQue;
   static std::list<Shapes*> palette;
@@ -25,7 +24,7 @@ class Shapes
 
   Shapes(Points l, float[4], float[4]); /*!<Baseclass constructor*/
   virtual ~Shapes() = 0;
-  virtual void draw() = 0;  
+  virtual void draw() = 0;
   virtual void drawFilled() = 0;
   virtual bool contains(int x, int y) = 0;
 };

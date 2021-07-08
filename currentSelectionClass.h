@@ -1,6 +1,6 @@
 /*************************************************************************//**
 * @file
-* @brief 
+* @brief
 *****************************************************************************/
 #ifndef CURRENTSELECTION
 #define CURRENTSELECTION
@@ -9,26 +9,23 @@
 #include "color.h"
 #include "shapeClass.h"
 
-struct Selection
-{
+struct Selection {
   char shape = 'R';   //Rectangle
   Points limits;
   float border[4] = {1.0, 1.0, 1.0, 1.0}; //White
-  float fill[4]   = {0.8721, 0.625, 0.025, 1.0}; //Maroon 
+  float fill[4]   = {0.8721, 0.625, 0.025, 1.0}; //Maroon
 };
 
-struct MoveContainer
-{
+struct MoveContainer {
   int x = -1;
   int y = -1;
   Shapes * shape;
 };
 
-class CurrentSelection
-{
-  public:
-    static Selection current;
-    static MoveContainer currentMove;
+class CurrentSelection {
+public:
+  static Selection current;
+  static MoveContainer currentMove;
 };
 
 #endif

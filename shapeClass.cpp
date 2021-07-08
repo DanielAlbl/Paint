@@ -1,7 +1,6 @@
 #include "shapeClass.h"
 
-Shapes::Shapes(Points l, float bColor[4], float fColor[4])
-{
+Shapes::Shapes(Points l, float bColor[4], float fColor[4]) {
   limits.x_st = l.x_st;
   limits.y_st = l.y_st;
   limits.x_end = l.x_end;
@@ -18,7 +17,7 @@ Shapes::Shapes(Points l, float bColor[4], float fColor[4])
   fillColor[3] = fColor[3];
 }
 
-Shapes::~Shapes(){}
+Shapes::~Shapes() {}
 
 std::list<Shapes*> Shapes::printQue;
 std::list<Shapes*> Shapes::palette;

@@ -1,7 +1,7 @@
 SOURCE = event.cpp \
-	     gui.cpp \
+	     palette.cpp \
 	     main.cpp \
-	     output.cpp \
+	     gl.cpp \
 	     rectangleClass.cpp \
 	     shapeClass.cpp \
 	     utilities.cpp \

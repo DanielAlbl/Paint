@@ -1,18 +1,19 @@
 /*************************************************************************//**
 * @file
-* @brief 
+* @brief
 *****************************************************************************/
 #ifndef FILLEDRECTANGLE
 #define FILLEDRECTANGLE
 
 #include "rectangleClass.h"
 
-class FilledRect : public Rect
-{
-  public:
-    FilledRect(Points limits, float * borderColor, float * fillColor) : 
-          Rect(limits, borderColor, fillColor){filled = true;}
-    static std::list<FilledRect*> palette;
+class FilledRect : public Rect {
+public:
+  FilledRect(Points limits, float * borderColor, float * fillColor) :
+    Rect(limits, borderColor, fillColor) {
+    filled = true;
+  }
+  static std::list<FilledRect*> palette;
 };
 
 #endif
