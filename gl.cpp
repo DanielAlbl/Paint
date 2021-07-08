@@ -3,19 +3,19 @@
 // Initilze glut window.
 void initOpenGL(int argc, char** argv, int length, int height) {
   glutInit(&argc, argv);
-
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
 
   glutInitWindowSize(length, height);
   glutInitWindowPosition(0, 0);
-  glutCreateWindow(argv[0]);
+  glutCreateWindow("Paint");
   glClearColor(Color[Black][R], Color[Black][G], Color[Black][B], Color[Black][A]);
-  glutDisplayFunc(drawDisplay);
-  clearScreen();
-  glutReshapeFunc(reshapeWindow);
 
+  glutDisplayFunc(drawDisplay);
+  glutReshapeFunc(reshapeWindow);
   glutKeyboardFunc(keyboard);
   glutMouseFunc(mouse);
+
+  clearScreen();
 }
 
 void clearScreen() {
