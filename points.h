@@ -7,10 +7,7 @@
 
 struct Points
 {
-  int x_st, 
-      y_st, 
-      x_end, 
-      y_end;
+  int x_st, y_st, x_end, y_end;
 };
 
 #endif

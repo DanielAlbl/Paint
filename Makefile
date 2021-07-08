@@ -1,11 +1,10 @@
 SOURCE = event.cpp \
-	 gui.cpp \
-	 main.cpp \
-	 output.cpp \
-	 rectangleClass.cpp \
-	 shapeClass.cpp \
-	 utilities.cpp \
-         filledRectangleClass.cpp \
+	     gui.cpp \
+	     main.cpp \
+	     output.cpp \
+	     rectangleClass.cpp \
+	     shapeClass.cpp \
+	     utilities.cpp \
          lineClass.cpp \
          ellipseClass.cpp \
          currentSelectionClass.cpp 

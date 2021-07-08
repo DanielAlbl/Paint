@@ -13,13 +13,11 @@ void keyboard(unsigned char key, int x, int y)
   // Quit glut on Escape.
   QuitOnEsc(key);
   
-  // Clear on Backspace.
-  ClearOnBs(key);
+  // Clear on c key.
+  ClearOnC(key);
 
   // removeLastItem(key);
   deleteLastShape(key);
-  // Redraw screen for all other keys.
-  drawDisplay();
 }
 /***************************************************************************//**
  * @author Daniel Albl/Lindsay
@@ -47,7 +45,7 @@ void mouse(int button, int state, int x, int y)
       CurrentSelection::current.limits.x_st = x;
       CurrentSelection::current.limits.y_st = y;
     }
-    if( state == GLUT_UP)
+	else if( state == GLUT_UP )
     {
         //store endpoints
        CurrentSelection::current.limits.x_end = x;
@@ -56,11 +54,11 @@ void mouse(int button, int state, int x, int y)
        Shapes::printQue.push_back( selectShape(CurrentSelection::current.limits, 
          CurrentSelection::current.border, CurrentSelection::current.fill,
          CurrentSelection::current.shape));
-       redrawEverything();
+       drawDisplay();
     }
   }
   //right click moves
-  if( button == GLUT_RIGHT_BUTTON )
+  else if( button == GLUT_RIGHT_BUTTON )
   {
     if( state == GLUT_DOWN )
     {
@@ -74,7 +72,7 @@ void mouse(int button, int state, int x, int y)
           CurrentSelection::currentMove.shape = i;
         }
     }
-    if ( state == GLUT_UP )
+	else if ( state == GLUT_UP )
     {
         //if corresponding down click was not in a shape
       if( CurrentSelection::currentMove.x == -1 )
@@ -94,11 +92,9 @@ void mouse(int button, int state, int x, int y)
       //essentially undo moving object flag
       CurrentSelection::currentMove.x = -1;
       
-      redrawEverything(); 
+      drawDisplay(); 
     } 
-
   }
-  glutSwapBuffers(); 
 }
 
 /***************************************************************************//**
@@ -116,66 +112,32 @@ void mouse(int button, int state, int x, int y)
  ******************************************************************************/
 bool colorPaletteClick( int x, int y, int button)
 {
-    //left button selects border color
-  if( button == GLUT_LEFT_BUTTON )
+  //loop through drawn shapes
+  for ( auto i : Shapes::palette )
   {
-      //loop through drawn shapes
-    for ( auto i : Shapes::palette )
+    if ( i->contains(x,y) )
     {
-      if ( i->contains(x,y) )
-      {
-          //if preview window
-        if( i->shape == 'X' )
-          return true;
-          //if a color window
-        else if (! i->shape)
-        {
-          std::memcpy( CurrentSelection::current.border, i->fillColor, 16);
-          buildPalette();
-        }
-          //if shape window
-        else
-          CurrentSelection::current.shape = i->shape;
-               
-        return true;
-      }
-    }
-  }
-  //same for fill color
-  else if ( button == GLUT_RIGHT_BUTTON )
-  {
-    for ( auto i : Shapes::palette )
-    {
-      if ( i->contains(x,y) )
-      {
-        if( i->shape == 'X' )
-          return true;
-        else if (! i->shape)
-        {
-          std::memcpy( CurrentSelection::current.fill, i->fillColor, 16);
-          buildPalette();
-        }
-        else 
-          CurrentSelection::current.shape = i->shape;
-        return true;
-      }
+  	  //if preview window
+  	if( i->shape == 'X' )
+  	  return true;
+  	if(button == GLUT_LEFT_BUTTON) {
+        //if a color window
+  	  if (! i->shape)
+        std::memcpy( CurrentSelection::current.fill, i->fillColor, 16);
+  		//if shape window
+	  else
+  	    CurrentSelection::current.shape = i->shape;
+  	}
+  	else if(button == GLUT_RIGHT_BUTTON and !i->shape)
+  	  std::memcpy( CurrentSelection::current.border, i->fillColor, 16);
+  		   
+  	drawDisplay();
+  	return true;
     }
   }
   return false;
 }
 
-/***************************************************************************//**
- * @author Daniel Albl/Lindsay
- *
- * @brief draws palette and shapes 
- *
- ******************************************************************************/
-void redrawEverything()
-{
-   glClear(GL_COLOR_BUFFER_BIT);
-   redraw();
-   buildPalette();
-}
 /***************************************************************************//**
  * @author Daniel Albl/Lindsay
  *
@@ -188,7 +150,7 @@ void QuitOnEsc(unsigned char key)
 {
   if(key == Esc || key == int('q'))
     {
-        glutLeaveMainLoop();
+       glutLeaveMainLoop();
 
         for (auto i : Shapes::palette )
             delete i;
@@ -206,7 +168,7 @@ void QuitOnEsc(unsigned char key)
  * @param[in] key - keyboard button
  *
  ******************************************************************************/
-void ClearOnBs(unsigned char key)
+void ClearOnC(unsigned char key)
 {
   if(key == int('c'))
     clearScreen();
@@ -228,7 +190,7 @@ void deleteLastShape(unsigned char key)
        return;
      delete Shapes::printQue.back();
      Shapes::printQue.pop_back();
-     redrawEverything();
+     drawDisplay();
   }
 }
 

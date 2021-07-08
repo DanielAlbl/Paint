@@ -18,7 +18,7 @@
   void keyboard(unsigned char key, int x, int y);
   void mouse(int, int, int, int);
   void QuitOnEsc(unsigned char);
-  void ClearOnBs(unsigned char);
+  void ClearOnC(unsigned char);
   bool colorPaletteClick(int, int, int);
   void redrawEverything();
   void deleteLastShape(unsigned char);

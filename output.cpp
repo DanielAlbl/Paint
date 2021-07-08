@@ -9,7 +9,7 @@ void initOpenGL(int argc, char** argv, int length, int height)
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
   
   glutInitWindowSize(length, height);
-  glutInitWindowPosition(length / 4, height + 50);
+  glutInitWindowPosition(0, 0);
   glutCreateWindow(argv[0]);
   glClearColor(Color[Black][R], Color[Black][G], Color[Black][B], Color[Black][A]);
   glutDisplayFunc(drawDisplay);
@@ -48,31 +48,8 @@ void drawDisplay()
 {
   glClear(GL_COLOR_BUFFER_BIT);
 
-  buildPalette();
   redraw();
+  buildPalette();
 
   glutSwapBuffers();  
-}
-
-void drawSquare(float x1, float y1, float x2, float y2, const float color[])
-{
-  glColor3fv(color);
-  glBegin(GL_POLYGON);
-    glVertex2f(x1, y1);
-    glVertex2f(x2, y1);
-    glVertex2f(x2, y2);
-    glVertex2f(x1, y2);
-  glEnd();
-}
-
-void drawBox(float x1, float y1, float x2, float y2, const float color[])
-{
-  glLineWidth(2);
-  glColor3fv(color);
-  glBegin(GL_LINE_LOOP);
-    glVertex2f(x1, y1);
-    glVertex2f(x2, y1);
-    glVertex2f(x2, y2);
-    glVertex2f(x1, y2);
-  glEnd();
 }
